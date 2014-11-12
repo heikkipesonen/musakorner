@@ -15,17 +15,13 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="musakornerApp">
+  <body ng-app="musakornerApp" ng-controller="MainCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div id="wrapper">
-      <div class="app-header">
-        <h1>musa korner</h1>
-      </div>
-
       <div playlist></div>
     </div>
 
@@ -64,6 +60,9 @@
         <script src="scripts/controllers/playlist.js"></script>
         <script src="scripts/services/api.js"></script>
         <script src="scripts/directives/playlist.js"></script>
+        <script src="scripts/directives/track.js"></script>
+        <script src="scripts/controllers/track.js"></script>
+        <script src="scripts/controllers/main.js"></script>
         <!-- endbuild -->
 </body>
 </html>

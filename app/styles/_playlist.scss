@@ -3,47 +3,71 @@ $gutter : 15px;
 	background-color: white;
 	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
 	margin-top: 64px;
+	margin-bottom: 64px;
 
 	li{
 		padding: 5px;
 		position: relative;
 		
 		border-bottom: 1px solid #ddd;
+		transition:all 0.2s;
 
-		
+
+		.img-wrapper{
+			position: absolute;
+			left: 0px;
+			top: 0px;			
+			height: 64px;
+			width: 64px;
+			overflow:hidden;
+		}
+
+		img{
+			height: 100%;
+		}
 
 		h4{
-			padding: 5px 64px 5px 64px;
-			font-size: 14pt;
+			padding: 5px 64px 5px 64px + $gutter;
+			font-size: 12pt;
 			position: relative;
 			width: 100%;
 		}
 
 		h4.artist-name{
 			font-weight: bold;
-			padding-top: $gutter;
+			padding-top: $gutter/2;
 		}
 
 		h4.song-name{
-			padding-bottom: $gutter;
+			padding-bottom: $gutter/2;
 		}
 
-		button{
+		span.song-duration{
+			position: absolute;
+			right: 64px;
+			font-size: 10pt;
+			top: 50%;
+			margin-top: -5pt;
+			font-weight: bold;
+		}
+
+		button.button-vote{
 			position: absolute;
 			top:50%;
-			margin-top: -19px;
+			right: $gutter/2;
+			margin-top: -22px;
+			border-radius: 50%;
+			transition: all 0.2s;
+
+			width: 44px;
+			height: 44px;
+
+			&:hover{
+				background-color:rgba(102, 210, 65, 0.29);
+			}
+
 			i{
 				color: green;
-			}
-
-			&.button-left{
-				left:$gutter;
-				right: auto;
-			}
-
-			&.button-right{
-				left:auto;
-				right: $gutter;
 			}
 		}
 	}
