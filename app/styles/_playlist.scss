@@ -10,8 +10,25 @@ $gutter : 15px;
 		position: relative;
 		
 		border-bottom: 1px solid #ddd;
-		transition:all 0.2s;
 
+		.track{
+			position: relative;
+			overflow: hidden;
+			height: 64px;
+			transition:all 0.2s;
+			
+
+			&.busy .track-content{
+				opacity: 0.3;
+			}
+		}
+
+		.track-content{
+			transition:all 0.2s;
+			height: 100%;
+			position: relative;
+			opacity:1;
+		}
 
 		.img-wrapper{
 			position: absolute;
