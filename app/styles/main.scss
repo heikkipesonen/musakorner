@@ -5,11 +5,36 @@
 
 body, html{
   background-color: #ddd;  
+  font-family: 'Helvetica Neue', 'Arial';
+  font-weight: 200;
+}
+
+*{
+  box-sizing: border-box;
 }
 
 #wrapper{
   margin: auto;
-  background-color: #d00;  
   max-width: 600px;
   width: 100%;
 }
+
+
+button{
+  background-color: transparent;
+  outline:none;
+  border:none;
+  cursor: pointer;
+
+  i{
+    font-size: 32px;
+  }
+
+  &:active, &:hover{
+    background-color: transparent;
+    outline:none;
+    border:none;
+  }
+}
+
+@import "playlist";
