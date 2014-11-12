@@ -12,22 +12,7 @@ angular
   .module('musakornerApp', [
     'ngAnimate',
     'ngCookies',
-    'ngResource',
-    'ngRoute',
+    'ngResource',    
     'ngSanitize',
     'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+  ]);
