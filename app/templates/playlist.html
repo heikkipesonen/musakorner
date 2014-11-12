@@ -1,20 +1,10 @@
 <ul class="playlist">
 	<li ng-repeat="item in tracks">
 
-	<table>
-		<tr>
-			<td>
-				<button class="button-vote"><i class="ion-ios7-minus-outline"></i></button>
-			</td>
-			<td>
-				<h4 ng-bind="item.name"></h4>
-			</td>
-			<td>
-				<button class="button-vote"><i class="ion-ios7-plus-outline"></i></button>
-			</td>
-		</tr>
-	</table>
-		
+				<button class="button-vote button-left"><i class="ion-ios7-minus-outline"></i></button>
+				<h4 class="artist-name" ng-bind="item.artists[0].name"></h4>
+				<h4 class="song-name" ng-bind="item.name"></h4>
+				<button class="button-vote button-right"><i class="ion-ios7-plus-outline"></i></button>		
 
 	</li>
 </ul>

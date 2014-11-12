@@ -1,10 +1,50 @@
+$gutter : 15px;
 .playlist{
+	background-color: white;
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+	margin-top: 64px;
+
 	li{
 		padding: 5px;
 		position: relative;
+		
+		border-bottom: 1px solid #ddd;
 
-		table{
+		
+
+		h4{
+			padding: 5px 64px 5px 64px;
+			font-size: 14pt;
+			position: relative;
 			width: 100%;
+		}
+
+		h4.artist-name{
+			font-weight: bold;
+			padding-top: $gutter;
+		}
+
+		h4.song-name{
+			padding-bottom: $gutter;
+		}
+
+		button{
+			position: absolute;
+			top:50%;
+			margin-top: -19px;
+			i{
+				color: green;
+			}
+
+			&.button-left{
+				left:$gutter;
+				right: auto;
+			}
+
+			&.button-right{
+				left:auto;
+				right: $gutter;
+			}
 		}
 	}
 }
