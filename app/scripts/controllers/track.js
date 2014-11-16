@@ -8,7 +8,7 @@
  * Controller of the musakornerApp
  */
 angular.module('musakornerApp')
-  .controller('TrackCtrl',['$scope','api','playlist', function ($scope, api, playlist) {
+  .controller('TrackCtrl',['$scope','playlist', function ($scope, playlist) {
   	
     angular.extend($scope, {
   		busy:false,

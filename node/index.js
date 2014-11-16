@@ -118,7 +118,9 @@ app.post('/castvote/:session/:trackid', function(req, res){
   res.end(JSON.stringify({'ok':result, 'track':track}));
 });
 
-
+function getPlaylist(session){
+  return applicationData[session].playlist;
+}
 
 function voteTrack(session, trackid, user){
   var track = findTrack(session, trackid);
@@ -134,16 +136,26 @@ function voteTrack(session, trackid, user){
   return false;
 }
 
-
 socket.on('connection',function(socket){
   console.log('pere, user');
+  socket.emit('request.join');
 
-  socket.on('vote', function(data, callback){
+  socket.on('join', function(data, callback){
+    socket.join(data.session);
+    console.log('join',data.session);
+    callback({ok:true, playlist: getPlaylist(data.session) });
+  });
+
+  socket.broadcast.on('vote', function(data, callback){
+   console.log(data);
     var track = voteTrack(data.session, data.track, data.client);
     
-    socket.broadcast.emit('track.voted',track);
+    socket.broadcast.to(data.session).emit('track.voted',track);
     callback(track);
   });
+
+
+
 });
 
 

@@ -37,23 +37,15 @@ angular.module('musakornerApp')
     		return result;
     	},
 
-    	get:function(){
+    	setPlaylist:function(data){
     		var me = this;
-			
-			return $http({
-		  		method:'GET',
-		  		url:CONFIG.api + '/playlist/' + this.session		  		
-		  	}).then(function(response){
-		  		var data = response.data;
-		  		me.tracks = data;
 
-		  		// timeout is teh pest
-		  		$timeout(function(){
-		  			me.sort();
-		  			me.scale();		  		
-		  		});
-		  	});
-			
+    		this.tracks = data;
+    		
+    		$timeout(function(){
+    			me.sort();
+    			me.scale();
+    		});
     	},
 
 
@@ -115,18 +107,28 @@ angular.module('musakornerApp')
     		
     	},
 
+
+    	// throw a vote to a track
     	castVote:function(track){
 				var me = this;
 				var d = $q.defer();
 				
 				this.socket.emit('vote',{client:this.client,session:this.session, track:track.id}, function(response){
-					console.log(response);
-
-
 	    		track.votes = response.votes;
 	    		track.modified = response.modified;
 					me.sort();
+					d.resolve(response);
+				});
 
+				return d.promise;
+			},
+
+			joinSession:function(){
+				var d = $q.defer();
+				var me = this;
+
+				this.socket.emit('join',{session: this.session}, function(response){					
+					me.setPlaylist(response.playlist);
 					d.resolve(response);
 				});
 
@@ -134,7 +136,17 @@ angular.module('musakornerApp')
 			}
     });
 
+
 		var me = this;
+
+		// server requests the socket session to join in an "room"
+		// because hitler
+		this.socket.on('request.join', function(data){
+			me.joinSession();
+		});
+
+
+		// some track has been voted, and an event comes back
 		this.socket.on('track.voted', function(data){
 			var track = me.findTrack('id',data.id);
 
