@@ -8,14 +8,25 @@
  * Service in the musakornerApp.
  */
 angular.module('musakornerApp')
-  .service('playlist',['CONFIG','$rootScope','$timeout','socket','$http','$q', function playlist(CONFIG, $rootScope, $timeout, socket, $http, $q) {
+  .service('playlist',
+  	['CONFIG',
+  	'$rootScope',
+  	'$timeout',
+  	'socket',
+  	'$http',
+  	'$q', 
+  	'$interval',
+
+  	function playlist(CONFIG, $rootScope, $timeout, socket, $http, $q, $interval) {
 
     angular.extend(this, {
   		session:'J787',
-  		client:null,  		
+  		client:null,
   		socket:socket,
 
-    	trackHeight:75,
+  		current:null,
+
+    	trackHeight:83,
     	style:{
     		height:0,
     	},
@@ -46,6 +57,9 @@ angular.module('musakornerApp')
     			me.sort();
     			me.scale();
     		});
+
+    		this.current = this.tracks[0];
+    		console.log(this.current);
     	},
 
 
@@ -84,6 +98,8 @@ angular.module('musakornerApp')
     				
     		});
 
+
+    		this.setTrackPlayTimes();
     		// so track items can find their spot, until sorting... and shit
     		$timeout(function(){
     			$rootScope.$broadcast('track.reorder');
@@ -107,7 +123,33 @@ angular.module('musakornerApp')
     		
     	},
 
+    	setTrackPlayTimes:function(){
+    		var time = Date.now();
+    		for (var i in this.tracks){
+    			this.tracks[i].time_until = time;
+    			time += this.tracks[i].duration_ms;
+    		}    		
+    	},
 
+/*
+    	getTimeToTrack:function(trackId){
+    		var track = this.findTrack('id', trackId);
+    		var result = 0;
+
+    		if (track){
+    			var index = this.tracks.indexOf(track);
+    			console.log(index);
+    			while (index >= 0){
+    				if (this.tracks[index]){
+    					result += this.tracks[index].duration_ms;
+    				}
+    				index--;
+    			}
+    		}
+
+    		return result;
+    	},
+*/
     	// throw a vote to a track
     	castVote:function(track){
 				var me = this;
@@ -128,6 +170,7 @@ angular.module('musakornerApp')
 				var me = this;
 
 				this.socket.emit('join',{session: this.session}, function(response){					
+					console.log(response)
 					me.setPlaylist(response.playlist);
 					d.resolve(response);
 				});
@@ -135,8 +178,7 @@ angular.module('musakornerApp')
 				return d.promise;
 			}
     });
-
-
+	
 		var me = this;
 
 		// server requests the socket session to join in an "room"

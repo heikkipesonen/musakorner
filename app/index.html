@@ -22,6 +22,26 @@
 
     <!-- Add your site or application content here -->
     <div id="wrapper">
+      <table class="header">
+        <tr>
+          <td>
+            <div class="header-image" ng-style="{'background-image':'url(' + playlist.current.album.images[1].url +')'}">              
+            </div>          
+
+            <div class="header-text">            
+              <h4 class="now-playing-song" ng-bind="playlist.current.name"></h4>
+              <h4 class="now-playing-artist" ng-bind="playlist.current.artists[0].name"></h4>
+            </div>
+          </td>
+        </tr>
+      </table>
+<!--
+      <div class="toolbar">
+        <button class="tool">Työkalu</button>
+        <button class="tool">Toinen</button>
+        <button class="tool">kolmas</button>
+      </div>
+-->
       <div playlist></div>
     </div>
 
@@ -44,9 +64,9 @@
     <![endif]-->
     <!-- endbuild -->
 
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/socket.io-client/socket.io.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>

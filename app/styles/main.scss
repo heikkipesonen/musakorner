@@ -6,7 +6,7 @@
 body, html{
   background-color: #ddd;  
   font-family: 'Helvetica Neue', 'Arial';
-  font-weight: 200;
+  font-weight: 200;  
 }
 
 *{
@@ -14,9 +14,64 @@ body, html{
 }
 
 #wrapper{
+  background-image: url('../images/body.png');
+  background-size: cover;
+  background-attachment: fixed;
+  box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.3);
   margin: auto;
-  max-width: 400px;  
+  max-width: 450px;  
   width: 100%;
+}
+
+.header{
+  position:relative;
+  height: 320px;
+  width: 100%;
+  background-image: url('../images/bg.png');
+
+  td{    
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  $cover-image-size: 180px;
+
+  .header-image{
+    display: inline-block;
+    background-color: white;
+    border-radius: 50%;
+    
+    width: $cover-image-size;
+    height: $cover-image-size;
+    border: 4px solid white;
+    background-position: 50% 50%;
+    background-size: cover;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.7);
+  }
+
+
+  .header-text{
+    padding: 15px;
+    width: 100%;
+  }
+
+  h4{
+    font-size: 16pt;
+    font-weight: 100;
+    color: white;
+    padding-top: 5px;
+    width: 100%;
+    margin:auto;
+  }
+  
+  .now-playing-song{
+    text-transform: uppercase;    
+  }
+
+  .now-playing-artist{
+    font-weight: 400;
+
+  }
 }
 
 .app-header{
@@ -37,6 +92,7 @@ body, html{
     margin-top: -7px;
     font-size: 14pt;
     text-transform: uppercase;
+    font-weight: 100;
   }
 }
 
@@ -55,6 +111,11 @@ button{
     outline:none;
     border:none;
   }
+}
+
+.toolbar{
+  height: 44px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
 @import "playlist";

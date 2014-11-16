@@ -1,46 +1,27 @@
 $gutter : 15px;
+$track-height: px;
+
 .playlist{
 	position:relative;
 	margin:auto;	
 	width:100%;
-	background-color: white;
-	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
-	margin-top: 64px;
-	margin-bottom: 64px;
+	
+	
+	
+	
 
 	li{
 		position: absolute;
 		width: 100%;
-		padding: 5px;		
-		background-color: white;
-		border-bottom: 1px solid #ddd;
-		transition:all 0.2s;
-
-
-		.votes-wrapper{
-			position:absolute;
-			top:0px;
-			left:0px;
-			width: 64px;
-			height: 100%;
-		}
-
-		.votes-count{
-			position:absolute;
-			top:0px;
-			left:0px;
-			width: 64px;
-			height: 64px;
-			overflow: hidden;
-			font-size: 42pt;
-			font-weight: 800;
-			text-align: right;
-		}
+		color: white;
+		transition:all 0.5s cubic-bezier(0.355, -0.175, 0.000, 1.090);;
 
 		.track{
+			padding: $gutter;			
 			position: relative;
 			overflow: hidden;
-			height: 64px;
+			height: $track-height;
+			border-bottom: 1px solid rgba(255,255,255,0.2);
 			
 
 			&.busy .track-content{
@@ -50,10 +31,47 @@ $gutter : 15px;
 
 		.track-content{
 			transition:all 0.2s;
-			height: 100%;
+			height: $track-height;
 			position: relative;
 			opacity:1;
 		}
+
+		.votes-wrapper{
+			position:absolute;
+			top:50%;
+			left:0px;
+			margin-top: -40px;
+			width: 64px;
+			height: 64px;
+
+			span.small{
+				position:absolute;
+				bottom: 0px;
+				font-size: 8pt;
+				width: 64px;
+				text-align: center;
+			}
+			
+			//border: 1px solid rgba(255,255,255,0.9);
+			//border-radius: 50%;
+		}
+
+		.votes-count{
+			position:absolute;
+			top:50%;
+
+			left:0px;
+			width: 64px;
+			height: 64px;
+			overflow: hidden;
+			margin-top: -13pt;
+			font-size: 26pt;
+			font-weight: 100;
+			text-align: center;
+
+		}
+
+
 
 		.img-wrapper{
 			position: absolute;
@@ -69,22 +87,42 @@ $gutter : 15px;
 		}
 
 		h4{
-			padding: 5px 64px 5px 64px + $gutter;
+			padding: 2px 64px 2px 64px + $gutter;
 			font-size: 12pt;
 			position: relative;
 			width: 100%;
+			font-weight: 200;
 		}
 
-		h4.artist-name{
-			font-weight: bold;
-			padding-top: $gutter/2;
+		h4.artist-name{			
+			padding-bottom: $gutter/2;
+			font-size: 10pt;
 		}
 
 		h4.song-name{
-			padding-bottom: $gutter/2;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			font-size: 14pt;
+			font-weight: 100;
+			padding-top: $gutter/2;
+		}
+
+		span.song-timeto{
+			display: none;
+			position: absolute;			
+			left: 0px;
+			bottom: 0%;
+			width: 64px;
+			display: block;
+			text-align: center;
+			font-size: 10pt;
+			margin-top: -5pt;
+
 		}
 
 		span.song-duration{
+			display: none;
 			position: absolute;
 			right: 64px;
 			font-size: 10pt;
@@ -96,6 +134,9 @@ $gutter : 15px;
 		button.button-vote{
 			position: absolute;
 			top:50%;
+			background-color: transparent;
+			border: 1px solid rgba(255, 255, 255, 0.9);
+
 			right: $gutter/2;
 			margin-top: -22px;
 			border-radius: 50%;
@@ -105,11 +146,17 @@ $gutter : 15px;
 			height: 44px;
 
 			&:hover{
-				background-color:rgba(102, 210, 65, 0.29);
+				border: 1px solid rgba(255, 255, 255, 1);
+				background-color: rgba(255,255,255,0.7);
+				transform: scale(0.9,0.9);
 			}
 
-			i{
-				color: green;
+			&:active{
+				transform: scale(0.7,0.7);
+			}
+
+			span,i{
+				color: white;
 			}
 		}
 	}

@@ -3,18 +3,23 @@
 		<div class="track-content">
 			<div class="votes-wrapper">
 				<h2 class="votes-count" ng-bind="ngModel.votes"></h2>
+				<span class="small">votes</span>
 			</div>
 			<!--
 			<div class="img-wrapper">
 				<img ng-src="{{ngModel.album.images[2].url}}">
 			</div>
 			-->
-			<h4 class="artist-name" ng-bind="ngModel.artists[0].name"></h4>
 			<h4 class="song-name" ng-bind="ngModel.name"></h4>
+			<h4 class="artist-name" ng-bind="ngModel.artists[0].name"></h4>
+
 			
 			<span class="song-duration" >{{ngModel.duration_ms | date:'mm:ss'}}</span>
 
-			<button class="button-vote button-right" ng-click="castVote()"><i class="ion-ios7-plus-empty"></i></button>
 			</div>
 	</div>
+	
+	<button class="button-vote button-right" ng-click="castVote()">
+		<i class="ion-ios7-plus-empty"></i>
+	</button>
 </li>

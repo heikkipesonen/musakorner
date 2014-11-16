@@ -8,7 +8,7 @@
  * Controller of the musakornerApp
  */
 angular.module('musakornerApp')
-  .controller('TrackCtrl',['$scope','playlist', function ($scope, playlist) {
+  .controller('TrackCtrl',['$scope','playlist','$timeout', function ($scope, playlist, $timeout) {
   	
     angular.extend($scope, {
   		busy:false,
@@ -18,12 +18,20 @@ angular.module('musakornerApp')
         top:0
       },      
     
+      getDuration:function(){
+        return $scope.ngModel.duration_ms;
+      },
+
       scale:function(){
         if (!$scope.ngModel.votes){$scope.ngModel.votes = 0;}
         $scope.style.top = $scope.order*playlist.trackHeight + 'px';
+        
+        //$scope.timeToTrack = playlist.getTimeToTrack($scope.ngModel.id);
+
+        $timeout(function(){});
       },
     
-      castVote:function(){        
+      castVote:function(){
         playlist.castVote($scope.ngModel);
   		}
   	});

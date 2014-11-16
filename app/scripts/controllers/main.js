@@ -8,7 +8,7 @@
  * Controller of the musakornerApp
  */
 angular.module('musakornerApp')
-  .controller('MainCtrl',['$scope', function ($scope) {
-
+  .controller('MainCtrl',['$scope','playlist', function ($scope, playlist) {
+  	$scope.playlist = playlist;
 
   }]);

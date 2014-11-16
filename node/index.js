@@ -137,6 +137,7 @@ function voteTrack(session, trackid, user){
 }
 
 socket.on('connection',function(socket){
+  
   console.log('pere, user');
   socket.emit('request.join');
 
@@ -146,16 +147,11 @@ socket.on('connection',function(socket){
     callback({ok:true, playlist: getPlaylist(data.session) });
   });
 
-  socket.broadcast.on('vote', function(data, callback){
-   console.log(data);
+  socket.on('vote', function(data, callback){   
     var track = voteTrack(data.session, data.track, data.client);
-    
     socket.broadcast.to(data.session).emit('track.voted',track);
     callback(track);
   });
-
-
-
 });
 
 
