@@ -8,10 +8,7 @@
  * Controller of the musakornerApp
  */
 angular.module('musakornerApp')
-  .controller('MainCtrl',['$scope','api', function ($scope, api) {
-  	angular.extend($scope,{
-  		api:api	
-  	});
+  .controller('MainCtrl',['$scope', function ($scope) {
 
 
   }]);

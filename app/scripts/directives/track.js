@@ -10,10 +10,12 @@ angular.module('musakornerApp')
   .directive('track', function () {
     return {
     	scope:{
-    		ngModel:'='
+    		ngModel:'=',
+        order:'='
     	},
     	controller:'TrackCtrl',
       templateUrl:'/templates/track.html',
-      restrict: 'A'
+      restrict: 'A',
+      replace:true
     };
   });

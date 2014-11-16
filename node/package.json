@@ -1,0 +1,19 @@
+{
+  "name": "musakorner",
+  "version": "1.0.0",
+  "description": "korner of musa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "mit",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "cors": "^2.5.2",
+    "express": "^4.10.2",
+    "http": "0.0.0",
+    "socket.io": "^1.2.0",
+    "url": "^0.10.1"
+  }
+}

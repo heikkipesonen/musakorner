@@ -1,4 +1,4 @@
-<ul class="playlist">
-	<li track ng-repeat="item in tracks" ng-model="item">				
+<ul class="playlist"  ng-style="style">
+	<li track ng-repeat="(trackIndex, item) in playlist.tracks" order="trackIndex" ng-model="item">
 	</li>
 </ul>

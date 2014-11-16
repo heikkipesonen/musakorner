@@ -8,22 +8,29 @@
  * Controller of the musakornerApp
  */
 angular.module('musakornerApp')
-  .controller('TrackCtrl',['$scope','api','$timeout', function ($scope, api, $timeout) {
-  	angular.extend($scope, {
+  .controller('TrackCtrl',['$scope','api','playlist', function ($scope, api, playlist) {
+  	
+    angular.extend($scope, {
   		busy:false,
-  		castVote:function(){
-  			$scope.busy = true;
-  			api.castVote($scope.ngModel.id).then(function(response){
-
-  				console.info(response);
-
-  			}, function(){
-  				
-  				$timeout(function(){
-  					$scope.busy = false;
-  					console.log('joo');
-  				},2000);
-  			});
+      
+      style:{        
+        left:'0px',
+        top:0
+      },      
+    
+      scale:function(){
+        if (!$scope.ngModel.votes){$scope.ngModel.votes = 0;}
+        $scope.style.top = $scope.order*playlist.trackHeight + 'px';
+      },
+    
+      castVote:function(){        
+        playlist.castVote($scope.ngModel);
   		}
   	});
+
+    $scope.$on('track.reorder', function(){
+      $scope.scale();
+    });
+
+    $scope.scale();
   }]);

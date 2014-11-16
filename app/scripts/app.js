@@ -14,9 +14,10 @@ angular
     'ngCookies',
     'ngResource',    
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'btford.socket-io'
   ])
 
   .constant('CONFIG',{
-
+  	api:'http://192.168.0.10:3000'
   });

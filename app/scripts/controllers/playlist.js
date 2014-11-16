@@ -9,11 +9,14 @@
  */
 angular.module('musakornerApp')
 
-  .controller('PlaylistCtrl', ['$scope','api',function ($scope, api) {
+  .controller('PlaylistCtrl', ['$scope','playlist',function ($scope, playlist) {
 
-  	api.search({q:'nightwish',type:'track'}).then(function(data){
-  		console.log(data);
-  		$scope.tracks = data.tracks.items;
-  	});
+  	playlist.get();
+
+
+  	angular.extend($scope, {
+  		playlist:playlist,
+  		style:playlist.style
+	 	});
     
   }]);
